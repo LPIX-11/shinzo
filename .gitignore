@@ -1,5 +1,4 @@
 coverage
 .lando.yml
 vendor
-config/database.php
 .environment/environment.php

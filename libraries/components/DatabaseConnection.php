@@ -1,15 +1,22 @@
 <?php
 
+    /**
+     * @author Mohamed Johnson
+     * This class handle the database connection
+     * - It takes the needed informations from database.php file
+     * - Tests if the database exist or if all informations are correct
+     * @param conection_parameters()
+     */
     function getConnection() {
 
-        $connection_parameters = connection_parameters();
+        $connection_params = connection_parameters();
 
-        $dsn = "mysql:host=".$connection_parameters['host'].";dbname=".$connection_parameters['database_name'];
-        $user = $connection_parameters['user'];
-        $password = $connection_parameters['password'];
+        $dsn = "mysql:host=".$connection_params['host'].";dbname=".$connection_params['database_name'];
+        $user = $connection_params['user'];
+        $password = $connection_params['password'];
 
         try {
-            $db = new PDO (
+            $database = new PDO (
                             $dsn,
                             $user,
                             $password,
@@ -34,5 +41,5 @@
                 die($message);
             }
         }
-        return $db;
+        return $database;
     }

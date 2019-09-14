@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Copyright © 2014 Monotype Imaging Inc. All rights reserved -->
+    <link rel="stylesheet" href="path/to/your/orangeHelvetica.css">
+    <!-- Copyright © 2016 Orange SA. All rights reserved -->
+    <link rel="stylesheet" href="path/to/your/orangeIcons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boosted@4.3.1/dist/css/boosted.min.css"
+        integrity="sha384-pQZlBsB+mYr1o13jiUUGYbwDh2LirLZP0Pvou6wwJ/sWWoHlU8oVY2l8sX/Ejhrr" crossorigin="anonymous">
+
+    <title>Agilometer | Sample Screen</title>
+</head>
+
+<body>
+    <div class="container-fluid pt-3 pb-5">
+        <ul class="nav o-nav-light">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link o-active">Sample Page</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Agilometer" tabindex="-1">Agilometer</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="align-items-center justify-content-center w-100 px-3">
+        <div class="table-reponsive">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>POLE</th>
+                        <th>AXE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($survey as $res => $val): ?>
+                    <tr>
+                        <td>
+                            <?= $res; ?>
+                        </td>
+                        <td>
+                            <?= $val; ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <?= $result ?>
+        </div>
+    </div>
+</body>
+
+</html>

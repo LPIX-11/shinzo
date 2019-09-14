@@ -14,9 +14,9 @@
 
         static function autoload($class)
         {
-            //autoloader of system
-            if(file_exists("libraries/environment/".$class.".php"))
-                require_once "libraries/environment/".$class.".php";
+            //autoload of components
+            if(file_exists("libraries/components/".$class.".php"))
+                require_once "libraries/components/".$class.".php";
             
             //autoload of developers classes
             else if(file_exists("src/entities/".$class.".php"))

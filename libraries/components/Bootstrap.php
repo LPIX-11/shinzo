@@ -2,13 +2,22 @@
 
     namespace libraries\components;
 
+	/**
+	 * Booststrap Class
+	 * @author Mohamed Johnson
+	 * This class handles the default behavior of the project
+	 * - It handles the url rerouting and load
+	 * - The existance of controllers
+	 * - The existance of the controller's default method
+	 * - The existance of method in a controller
+	 */
     class Bootstrap {
 
         public function __construct() {
-            $model = new Model();
-			
-			if(isset($_GET['url'])) {
-                $url = explode('/',$_GET['url']);
+
+			if(filter_input(INPUT_GET, 'url')) {
+
+                $url = explode('/', filter_input(INPUT_GET, 'url'));
 
                 $file = 'src/controller/' . $url[0] . 'Controller.php';
 
@@ -17,24 +26,25 @@
 
                     $controller = new $url[0]();
 
-                    // if the method exist
+					// When landing on the controller, testing if the default index method exist
                     if(isset($url[1])) {
+
                         if($url[1] == "") {
                             $url[1] = "index";
                         }
 
                         if(method_exists($controller, $url[1])) {
-                            $m =$url[1];
+                            $method = $url[1];
                             
 							require_once "DatabaseConnection.php";
                             
-                            $r = paramsMethods($url[0],$url[1]);
+                            $request = paramsMethods($url[0],$url[1]);
 
-                            $params = $r->getParameters();
+                            $params = $request->getParameters();
 
                             if(count($params)== 0)
                             {
-                                $controller->$m();
+                                $controller->$method();
 
                             } else {
                                 if(isset($url[2])) {
